@@ -1,0 +1,12 @@
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+
+# Dependency directories
+/node_modules
+/bower_components
+
+# Build artifacts
+dist/
+coverage/
