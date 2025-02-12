@@ -4,12 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Panel | Tottus</title>
+    <link rel="icon" type="image/png" href="imagenes/log.png">  <!-- Para PNG -->
     <link rel="stylesheet" href="panelStyle.css">
 
   </head>
   <body>
-      
-    
+
+    <div class="container" id="container">
+        
+        <div class="form-container sign-in">
+            <form>
+                <h1>Iniciar Sesión</h1>
+                <span>Con el usuario proporcionado por Tottus Perú</span>
+                <input type="email" placeholder="Correo">
+                <input type="password" placeholder="Contraseña">
+                <a href="#">¿Estas seguro de tu contraseña?</a>
+                <button>Iniciar Sesión</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                
+                <div class="toggle-panel toggle-right">
+                  <img src="imagenes/logx.png">
+                    <h1>Bienvenido</h1>
+                    <p>En esta plataforma encontrará todo para tomar decisiones.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="panelLogica.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.9"></script>
