@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panel | Tottus</title>
+    <link rel="icon" type="image/png" href="../assets/log.png" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="./panelStyle.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="headers">
+        <button class="logo" onclick="abrirNav()" id="abrirNav">
+          <img src="  ../assets/logo.webp" />
+        </button>
+        <nav class="top">
+          <div class="profile">
+              <i class="fa-solid fa-user"></i>
+              <h5 id="nombre-usuario"></h5>
+          </div>
+          
+          <button class="refresh">
+            <i class='bx bx-rotate-right' ></i>
+          </button>
+        </nav>
+      </div>
+
+      <div class="content">
+        <aside class="close">
+          <div>
+            <button id="close" onclick="cerrarNav()" id="cerrarNav">
+              <i class="bx bx-x"></i>
+            </button>
+            <button class="item active">
+              <i class="bx bxs-shopping-bag"></i>
+              <span>Dashboard de ventas y facturación</span>
+            </button>
+            <button class="item">
+              <i class="bx bx-list-ul"></i>
+              <span>Dashboard de inventario y logística</span>
+            </button>
+            <button class="item">
+              <i class="bx bxs-group"></i>
+              <span>Dashboard de comportamiento del cliente</span>
+            </button>
+          </div>
+          <button class="item" onclick="cerrarSesion()">
+            <i class="bx bx-log-out"></i>
+            Cerrar Sesion
+          </button>
+        </aside>
+        <main>
+          <header>
+            <h5>Bienvenido al Dashboard para la Toma de Decisiones!</h5>
+          </header>
+
+          <div class="separator">
+            <div class="info">
+              <h1 id="tituloDashboard">Dashboard de ventas y facturación</h1>
+            </div>
+          </div>
+
+          <div class="separator"></div>
+        </main>
+      </div>
+    </div>
+
+    <script src="./panelLogica.js"></script>
+  </body>
+</html>

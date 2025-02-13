@@ -1,0 +1,44 @@
+[
+  {
+    "nombre": "Elena",
+    "apellido": "Suarez",
+    "sede": "Tusilagos",
+    "usuario": "esuarez",
+    "password": "Xv9!sP@4qLm"
+  },
+  {
+    "nombre": "Carlos",
+    "apellido": "Fernández",
+    "sede": "Lima Sur",
+    "usuario": "cfernandez",
+    "password": "hT7#kZ1@oPq"
+  },
+  {
+    "nombre": "María",
+    "apellido": "Gómez",
+    "sede": "Angamos",
+    "usuario": "mgomez",
+    "password": "Rp5$yL8@qNx"
+  },
+  {
+    "nombre": "Jorge",
+    "apellido": "Ramírez",
+    "sede": "Campoy",
+    "usuario": "jramirez",
+    "password": "Mn2!aX4@oVy"
+  },
+  {
+    "nombre": "Lucía",
+    "apellido": "Torres",
+    "sede": "Proceres",
+    "usuario": "ltorres",
+    "password": "Zk3#pW6@vBt"
+  },
+  {
+    "nombre": "Gricel",
+    "apellido": "Mucha",
+    "sede": "La Marina",
+    "usuario": "gvalery",
+    "password": "Qp9$wT4@oNs"
+  }
+]
