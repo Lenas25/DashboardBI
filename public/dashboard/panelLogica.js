@@ -48,13 +48,15 @@ const updateTitle = (text) => {
   titulo.innerText = text;
 };
 
-const abrirNav = () => {
-  document.querySelector("aside").classList.remove("close");
-};
+document.addEventListener("DOMContentLoaded", function () {
+  const abrirNavBtn = document.getElementById("abrirNav");
+  const asideMenu = document.querySelector("aside");
 
-const cerrarNav = () => {
-  document.querySelector("aside").classList.add("close");
-};
+  abrirNavBtn.addEventListener("click", function () {
+    asideMenu.classList.toggle("close"); // Alterna la clase 'close'
+  });
+});
+
 
 const handleResize = () => {
   const aside = document.querySelector("aside");

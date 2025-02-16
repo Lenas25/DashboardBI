@@ -1,0 +1,246 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+}
+
+a, h1{
+    text-decoration: none;
+    color: #082517;
+}
+
+i{
+    font-size: 35px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr;
+    height: 100vh;
+}
+.sidebar {
+    padding: 20px; /* Opcional: Para que el borde no quede muy pegado al contenido */
+    margin-bottom: 250px;
+}
+.sidebar a {
+    font-size: 28px; /* Ajusta el tamaño del texto */
+    font-weight: bold; /* Opcional: hacer el texto más grueso */
+}
+
+
+.container .left-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+
+.container .left-section .logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container .left-section .logo img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.container .left-section .logo a{
+    font-weight: 800;
+    font-size: 20px;
+    color: #082517;
+}
+
+.menu-btn{
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: #D1E6F9;
+    border-radius: 6px;
+    cursor: pointer;
+    display: none;
+}
+
+.menu-btn i{
+    font-size: 40px;
+    color: #082517;
+}
+
+.container .left-section .sidebar{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.container .left-section .sidebar .item{
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.container .left-section .sidebar i{
+    color: #082517;
+    transition: all 0.3s ease;
+
+}
+
+.container .left-section .sidebar a{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 14px;
+    color: #082517;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.container .left-section .sidebar .item#active a,
+.container .left-section .sidebar .item#active i,
+.container .left-section .upgrade .link i{
+    color: #aedc46;
+}
+
+
+
+
+
+
+main{
+    border-left: 2px solid #F0F0F0;
+    padding: 40px 40px 0 40px;
+}
+
+main header{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+main header h5{
+    font-size: 18px;
+    color: #082517;
+    font-weight: 400;
+}
+
+main .separator{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+main .separator .info{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+main .separator .info h3{
+    font-size: 30px;
+}
+
+
+
+
+.container .right-section{
+    padding: 40px 40px 0 40px;
+}
+
+
+
+
+.container .right-section .top .profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #aedc46;
+    width: 244px;
+    height: 60px;
+    border-radius: 16px;
+  
+}
+.profile i {
+    font-size: 25px; /* Tamaño del icono */
+}
+.top {
+    display: flex;
+    justify-content: flex-end; /* Mueve todo el contenido a la derecha */
+    padding-right: -20px; /* Espacio opcional desde el borde derecho */
+}
+
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra horizontalmente */
+    gap: 10px; /* Espacio entre el icono y el texto */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.user i {
+    font-size: 25px; /* Tamaño del icono */
+}
+
+.user h5 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0; /* Elimina márgenes extra */
+}
+
+.container .right-section .separator#first{
+    margin-top: 8px;
+}
+
+.container .right-section .separator h4{
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    
+    .container{
+        grid-template-columns: 1fr 6fr 5fr;
+    }
+
+    .container .left-section,
+    .container main,
+    .container .right-section{
+        padding: 20px 20px 0 20px;
+    }
+
+    .container .left-section .logo a,
+    .container .left-section .sidebar a,
+    .container .left-section .upgrade{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+    
+    .container{
+        grid-template-columns: 1fr 1fr;
+    }
+    main h5{
+        font-size: 16px;
+    }
+
+
+
+}
+
+@media screen and (max-width: 768px) {
+    
+    .container{
+        grid-template-columns: 1fr;
+        padding-top: 80px;
+    }
+}
