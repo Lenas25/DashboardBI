@@ -8,7 +8,7 @@
 }
 
 h1 {
-  color: #082517;
+  color: #61ae33;
 }
 
 h5 {
@@ -44,7 +44,17 @@ button {
   cursor: pointer;
   background-color: transparent;
 }
+.top .profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.top .profile i {
+  font-size: 24px;
+  color: white;
+  margin-right: auto;
+}
 aside.close {
   display: none;
 }
@@ -81,7 +91,7 @@ aside button {
   justify-content: start;
   text-align: start;
   gap: 10px;
-  color: #082517;
+  color: #61ae33;
   i {
     font-size: 30px;
   }
@@ -89,7 +99,7 @@ aside button {
 
 aside button:hover,
 .active {
-  background: #e3f8e9;
+  background: #f2f5f4;
 }
 
 #close {
@@ -108,7 +118,7 @@ aside button:hover,
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 30px;
   margin-top: 10px;
 }
 
@@ -124,7 +134,7 @@ nav {
 nav .profile {
   background: #61ae33;
   color: whitesmoke;
-  padding: 10px 20px;
+  padding: 20px 20px;
   border-radius: 20px;
 }
 
@@ -135,7 +145,12 @@ nav .profile {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  width: 100px;
+  width: 150px;
+  margin-top: 30px;
+  margin-left: 40px;
+}
+.btn {
+  padding-top: 40px; /* Ajusta según sea necesario */
 }
 
 .logo > img {
@@ -155,6 +170,14 @@ nav .profile {
   border-radius: 100%;
   background: #61ae33;
 }
+aside {
+  width: 250px;
+  transition: transform 0.3s ease-in-out;
+}
+
+aside.close {
+  transform: translateX(-100%); /* Mueve el menú fuera de la pantalla */
+}
 
 #dashboard {
   padding-top: 30px;
@@ -168,7 +191,11 @@ nav .profile {
   }
 
   h5 {
-    font-size: 20px;
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 35px;
   }
 
   h1 {
@@ -178,6 +205,9 @@ nav .profile {
   aside {
     width: 40%;
     padding: 250px 30px 50px;
+  }
+  aside button {
+    font-size: 15px;
   }
 
   aside button {
@@ -219,26 +249,39 @@ nav .profile {
   #close {
     display: none;
   }
-
-  .content {
-    display: flex;
-    gap: 30px;
-    height: 80vh;
-  }
-
-  main {
-    width: 100%;
+  
+  aside {
+    position: relative;
+    width: 300px;
     height: 100%;
-    padding-right: 30px;
-  }
+    box-shadow: none;
+    padding: 30px;
+    border-right: 2px solid #b6c1bc;
+    gap: 100px;
+    div {
+      gap: 50px;
+    }
 
-  .logo {
-    margin-bottom: 0;
-  }
+    .content {
+      display: flex;
+      gap: 30px;
+      height: 80vh;
+    }
 
-  .refresh {
-    width: 70px;
-    height: 70px;
-    font-size: 50px;
+    main {
+      width: 100%;
+      height: 100%;
+      padding-right: 30px;
+    }
+
+    .logo {
+      margin-bottom: 0;
+    }
+
+    .refresh {
+      width: 70px;
+      height: 70px;
+      font-size: 50px;
+    }
   }
 }

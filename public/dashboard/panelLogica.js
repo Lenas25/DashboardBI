@@ -82,9 +82,7 @@ const abrirNav = () => {
   document.querySelector("aside").classList.remove("close");
 };
 
-const cerrarNav = () => {
-  document.querySelector("aside").classList.add("close");
-};
+
 
 const handleResize = () => {
   const aside = document.querySelector("aside");
