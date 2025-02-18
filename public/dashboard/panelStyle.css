@@ -11,10 +11,9 @@ h1 {
   color: #082517;
 }
 
-h5{
-    font-size: 16px;
+h5 {
+  font-size: 16px;
 }
-
 
 body {
   min-height: 100vh;
@@ -26,6 +25,10 @@ body {
   margin: 20px 10px;
   text-align: center;
   min-height: 100vh;
+}
+
+.content {
+  height: 100vh;
 }
 
 .headers {
@@ -43,7 +46,7 @@ button {
 }
 
 aside.close {
-    display: none;
+  display: none;
 }
 
 aside {
@@ -70,8 +73,8 @@ aside div {
 }
 
 aside button {
-    padding: 10px 20px;
-    border-radius: 30px;
+  padding: 10px 20px;
+  border-radius: 30px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -84,13 +87,14 @@ aside button {
   }
 }
 
-aside button:hover, .active {
+aside button:hover,
+.active {
   background: #e3f8e9;
 }
 
 #close {
-    padding: 0;
-    width: fit-content;
+  padding: 0;
+  width: fit-content;
   position: absolute;
   top: 40px;
   right: 40px;
@@ -139,98 +143,102 @@ nav .profile {
   object-fit: cover;
 }
 
-.refresh{
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: whitesmoke;
-    font-size: 40px;
-    border-radius: 100%;
-    background: #61ae33;
+.refresh {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: whitesmoke;
+  font-size: 40px;
+  border-radius: 100%;
+  background: #61ae33;
 }
 
+#dashboard {
+  padding-top: 30px;
+  height: 60vh;
+  overflow: auto;
+}
 
 @media (min-width: 640px) {
-    h5{
-        font-size: 20px;
-    }
+  #dashboard {
+    height: 100vh;
+  }
 
-    h1{
-        font-size: 40px;
-    }
+  h5 {
+    font-size: 20px;
+  }
 
-    aside{
-        width: 40%;
-        padding: 250px 30px 50px;
-    }
+  h1 {
+    font-size: 40px;
+  }
 
-    aside button{
-        font-size: 18px;
-    }
+  aside {
+    width: 40%;
+    padding: 250px 30px 50px;
+  }
 
+  aside button {
+    font-size: 18px;
+  }
 }
 
 @media (min-width: 1024px) {
+  #dashboard {
+    height: 90%;
+  }
 
-    body{
-        height: 100vh;
-        overflow: hidden;
+  .container {
+    margin: 0;
+  }
+
+  .headers {
+    height: 15vh;
+    padding: 10px 50px;
+  }
+
+  aside {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    box-shadow: none;
+    padding: 30px;
+    border-right: 2px solid #082517;
+    gap: 100px;
+    div {
+      gap: 50px;
     }
 
-    .container{
-        margin: 0;
+    button i {
+      font-size: 40px;
     }
-    
-    .headers{
-        height: 15vh;
-        padding: 10px 50px;
-    }
+  }
 
-    aside{
-        position: relative;
-        width: 300px;
-        height: 100%;
-        box-shadow: none;
-        padding: 30px;
-        border-right: 2px solid #082517;
-        gap:100px;
-        div{
-            gap: 50px;
-        }
+  #close {
+    display: none;
+  }
 
-        button i{
-            font-size: 40px;
-        }
-    }
+  .content {
+    display: flex;
+    gap: 30px;
+    height: 80vh;
+  }
 
-    #close{
-        display: none;
-    }
+  main {
+    width: 100%;
+    height: 100%;
+    padding-right: 30px;
+  }
 
-    .content{
-        display: flex;
-        gap: 30px;
-        height: 80vh;
-    }
+  .logo {
+    margin-bottom: 0;
+  }
 
-    main{
-        width: 100%;
-        height: 100%;
-        padding-right: 30px;
-    }
-
-    .logo{
-        margin-bottom: 0;
-    }
-
-    .refresh{
-        width: 70px;
-        height: 70px;
-        font-size: 50px;
-    }
+  .refresh {
+    width: 70px;
+    height: 70px;
+    font-size: 50px;
+  }
 }
-
-

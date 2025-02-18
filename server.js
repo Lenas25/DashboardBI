@@ -29,6 +29,20 @@ app.get('/users', (req, res) => {
     });
 });
 
+app.get('/datosbi', (req, res) => {
+    fetch('https://api.powerbi.com/v1.0/myorg/reports', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer TU_ACCESS_TOKEN',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    
+});
+
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
