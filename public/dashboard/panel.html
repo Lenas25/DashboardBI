@@ -16,25 +16,52 @@
   <body>
     <div class="container">
       <div class="headers">
-        <button class="logo" onclick="abrirNav()" id="abrirNav">
+        <button class="logo" onclick="toggleNav()" id="abrirNav">
           <img src="  ../assets/logo.webp" />
         </button>
         <nav class="top">
           <div class="profile">
-              <i class="fa-solid fa-user"></i>
-              <h5 id="nombre-usuario"></h5>
+            <i class="fa-solid fa-user"></i>
+            <h5 id="nombre-usuario"></h5>
           </div>
-          
-          <button class="refresh">
-            <i class='bx bx-rotate-right' ></i>
-          </button>
+          <div class="notifications-container">
+            <button class="notifications" onclick="toggleNotifications()">
+              <i class="bx bx-bell"></i>
+            </button>
+            <div class="notification-bar" id="notifications">
+              <h5>Notificaciones</h5>
+              <div class="notifications-list">
+                <div class="notification-item" id="bajoStock">
+                  <div class="notification-title">
+                    <i class="bx bx-shopping-bag"></i>
+                    <p>Productos Bajos en Stock</p>
+                  </div>
+                  <ul>
+                    <li>Producto 1</li>
+                    <li>Producto 2</li>
+                    <li>Producto 3</li>
+                  </ul>
+                </div>
+                <div class="notification-item" id="prontoVencimiento">
+                  <div class="notification-title">
+                    <i class="bx bx-shopping-bag"></i>
+                    <p>Productos Pronto a Vencer</p>
+                  </div>
+                  <ul>
+                    <li>Producto 1</li>
+                    <li>Producto 2</li>
+                    <li>Producto 3</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </nav>
       </div>
 
       <div class="content">
         <aside class="close">
           <div class="btn">
-           
             <button class="item active">
               <i class="bx bxs-shopping-bag"></i>
               <span>Dashboard de ventas y facturación</span>
@@ -64,15 +91,11 @@
             </div>
           </div>
 
-          <div class="separator" id="dashboard">
-            
-          </div>
+          <div class="separator" id="dashboard"></div>
         </main>
       </div>
     </div>
-
     <script src="./panelLogica.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js"></script>
-
   </body>
 </html>

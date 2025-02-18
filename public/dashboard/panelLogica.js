@@ -77,12 +77,38 @@ const changeDashboard = (title) => {
 //   })
 //   .catch(error => console.error('Error al cargar el archivo Excel:', error));
 
+const obtenerBajoStock = async () => {
+  const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSUU2Q7lokaj-o5467Wj2BKzgX2XV3tmMkNAXEEIxET584qwM_3RoUdGXNtfkIlvQ/pub?output=csv";
+  
+  try {
+      const response = await fetch(url);
+      const data = await response.text();
+      // Convertir CSV a Array de Objetos
+      const filas = data.split("\n").map(row => row.split(","));
+      const encabezados = filas.shift();
+      const inventario = filas.map(fila => {
+          const objeto = {};
+          fila.forEach((valor, index) => {
+              objeto[encabezados[index]] = valor.trim();
+          });
+          return objeto;
+      });
 
-const abrirNav = () => {
-  document.querySelector("aside").classList.remove("close");
-};
+      const notificaciones = inventario.filter(item => Number.parseInt(item.stockactual) <= 30);
 
+      console.log("Productos con stock bajo:", notificaciones);
+  } catch (error) {
+      console.error("Error al obtener los datos:", error);
+  }
+}
 
+const toggleNav = () => {
+  document.querySelector("aside").classList.toggle("close");
+}
+
+const toggleNotifications = () => {
+  document.querySelector("#notifications").classList.toggle("close");
+}
 
 const handleResize = () => {
   const aside = document.querySelector("aside");
@@ -100,6 +126,7 @@ const cerrarSesion = () => {
 document.addEventListener("DOMContentLoaded", () => {
   checkExistence();
   handleResize();
+  obtenerBajoStock();
   const items = document.querySelectorAll("aside .item");
     items.forEach((item, index) => {
         if (index < 3) {

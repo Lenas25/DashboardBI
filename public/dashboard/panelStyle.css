@@ -11,12 +11,8 @@ h1 {
   color: #61ae33;
 }
 
-h5 {
-  font-size: 16px;
-}
-
 body {
-  min-height: 100vh;
+  height: 100vh;
   overflow-x: hidden;
 }
 
@@ -24,19 +20,30 @@ body {
   position: relative;
   margin: 20px 10px;
   text-align: center;
-  min-height: 100vh;
+  height: 100%;
 }
 
 .content {
-  height: 100vh;
+  height: calc(100vh - 15vh);
+  display: flex;
+}
+
+main{
+  width: 100%;
+  padding: 10px;
+}
+
+header{
+  font-size: 20px;
 }
 
 .headers {
-  padding-top: 20px;
+  padding-block: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 button {
@@ -44,6 +51,22 @@ button {
   cursor: pointer;
   background-color: transparent;
 }
+
+nav {
+  justify-self: end;
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  align-items: center;
+}
+
+nav .profile {
+  background: #61ae33;
+  color: whitesmoke;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
 .top .profile {
   display: flex;
   align-items: center;
@@ -55,7 +78,8 @@ button {
   color: white;
   margin-right: auto;
 }
-aside.close {
+
+.close {
   display: none;
 }
 
@@ -64,9 +88,9 @@ aside {
   left: 0;
   top: 0;
   bottom: 0;
-  padding: 250px 20px 40px;
+  padding: 150px 20px 40px;
   background: white;
-  width: 70%;
+  width: 100%;
   height: 100vh;
   box-shadow: 19px 6px 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -106,61 +130,71 @@ aside button:hover,
   padding: 0;
   width: fit-content;
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 50px;
+  right: 10px;
+  color: black;
+  transition: all 0.5s ease-in-out;
+  background-color: transparent;
+  :hover {
+    color: #61ae33;
+  }
   i {
     font-size: 50px;
   }
 }
 
-#close:hover {
-  background: transparent;
+.notifications-container{
+  position: relative;
 }
+
+.notification-bar{
+  position: absolute;
+  top: 60px;
+  right: 0;
+  border: 2px solid #61ae33;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 10px;
+  width: 200px;
+}
+
+.notification-title{
+  margin-top: 20px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #61ae33;
+  color: whitesmoke;
+}
+
 
 h1 {
   font-size: 30px;
   margin-top: 10px;
 }
 
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-nav .profile {
-  background: #61ae33;
-  color: whitesmoke;
-  padding: 20px 20px;
-  border-radius: 20px;
-}
-
 .logo {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  width: 150px;
-  margin-top: 30px;
-  margin-left: 40px;
+  display: inline-block;
+  width: 100px;
 }
 .btn {
   padding-top: 40px; /* Ajusta según sea necesario */
 }
 
 .logo > img {
+  position: sticky;
   width: 100%;
   object-fit: cover;
 }
 
-.refresh {
-  width: 50px;
-  height: 50px;
+.notifications {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,10 +203,7 @@ nav .profile {
   font-size: 40px;
   border-radius: 100%;
   background: #61ae33;
-}
-aside {
-  width: 250px;
-  transition: transform 0.3s ease-in-out;
+  padding: 5px;
 }
 
 aside.close {
@@ -189,9 +220,9 @@ aside.close {
   #dashboard {
     height: 100vh;
   }
-
-  h5 {
-    font-size: 16px;
+  .headers{
+    justify-content: space-between;
+    padding-inline: 50px;
   }
 
   h1 {
@@ -203,9 +234,9 @@ aside.close {
   }
 
   aside {
-    width: 40%;
-    padding: 250px 30px 50px;
+    width: 50%;
   }
+
   aside button {
     font-size: 15px;
   }
@@ -278,7 +309,7 @@ aside.close {
       margin-bottom: 0;
     }
 
-    .refresh {
+    .notifications {
       width: 70px;
       height: 70px;
       font-size: 50px;
