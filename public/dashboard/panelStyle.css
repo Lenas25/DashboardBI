@@ -7,6 +7,20 @@
   font-family: "Montserrat", sans-serif;
 }
 
+ul {
+  padding-block: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  list-style: none;
+  text-align: left;
+  height: auto;
+  min-height: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  transition: height 0.3s ease;
+}
+
 h1 {
   color: #61ae33;
 }
@@ -28,12 +42,12 @@ body {
   display: flex;
 }
 
-main{
+main {
   width: 100%;
   padding: 10px;
 }
 
-header{
+header {
   font-size: 20px;
 }
 
@@ -143,11 +157,11 @@ aside button:hover,
   }
 }
 
-.notifications-container{
+.notifications-container {
   position: relative;
 }
 
-.notification-bar{
+.notification-bar {
   position: absolute;
   top: 60px;
   right: 0;
@@ -155,12 +169,11 @@ aside button:hover,
   background-color: whitesmoke;
   border-radius: 10px;
   padding: 10px;
-  width: 200px;
+  width: 250px;
 }
 
-.notification-title{
+.notification-title {
   margin-top: 20px;
-  font-size: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -170,7 +183,6 @@ aside button:hover,
   background-color: #61ae33;
   color: whitesmoke;
 }
-
 
 h1 {
   font-size: 30px;
@@ -220,7 +232,7 @@ aside.close {
   #dashboard {
     height: 100vh;
   }
-  .headers{
+  .headers {
     justify-content: space-between;
     padding-inline: 50px;
   }
@@ -280,7 +292,7 @@ aside.close {
   #close {
     display: none;
   }
-  
+
   aside {
     position: relative;
     width: 300px;
