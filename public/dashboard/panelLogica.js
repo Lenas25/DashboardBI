@@ -2,7 +2,7 @@ const dashboards = [
   {
     title: "Inventario y Logística",
     frame:
-      '<iframe title="Dashboard de Inventario" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZmI4Yjg3NmEtNGJhNi00MDBhLTlhN2MtOGNjNmNlYzljYjdiIiwidCI6ImM0YTY2YzM0LTJiYjctNDUxZi04YmUxLWIyYzI2YTQzMDE1OCIsImMiOjR9" frameborder="0" allowFullScreen="true" style="border: none; width: 100%; height: 100%;></iframe>',
+      '<iframe title="Dashboard de Inventario" width="1140" height="541.25" src="https://app.powerbi.com/view?r=eyJrIjoiZmI4Yjg3NmEtNGJhNi00MDBhLTlhN2MtOGNjNmNlYzljYjdiIiwidCI6ImM0YTY2YzM0LTJiYjctNDUxZi04YmUxLWIyYzI2YTQzMDE1OCIsImMiOjR9" frameborder="0" allowFullScreen="true" style="border: none; width: 100%; height: 100%;"></iframe>',
   },
   {
     title: "",
