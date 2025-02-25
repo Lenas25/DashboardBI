@@ -11,6 +11,10 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '/public')));
 
+app.get('/', (req, res) => {
+    res.redirect('/inicio');
+});
+
 app.get('/inicio', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/inicio/login.html'));
 });
@@ -19,8 +23,8 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/dashboard/panel.html'));
 });
 
-app.get('/api/users', (req, res) => {
-    fs.readFile(path.join(__dirname, '/data/users.json'), 'utf8', (err, data) => {
+app.get('/users', (req, res) => {
+    fs.readFile(path.join(__dirname, './data/users.json'), 'utf8', (err, data) => {
         if (err) {
             res.status(500).send('Error al leer el archivo users.json');
             return;
