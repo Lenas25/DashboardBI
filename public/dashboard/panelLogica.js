@@ -1,16 +1,16 @@
 const dashboards = [
   {
-    title: "Dashboard de ventas y facturación",
+    title: "Dashboard de Ventas",
     frame:
       '<iframe title="Dashboard de Ventas" width="1140" height="541.25"  src="https://app.powerbi.com/view?r=eyJrIjoiZGQ4MjNiOTgtMDZlNC00YTViLTgxNWUtNzE0OGUyYTgwZTAxIiwidCI6ImM0YTY2YzM0LTJiYjctNDUxZi04YmUxLWIyYzI2YTQzMDE1OCIsImMiOjR9" frameborder="0" allowFullScreen="true" style="border: none; width: 100%; height: 100%;"></iframe>',
   },
   {
-    title: "Dashboard de inventario y logística",
+    title: "Dashboard de Inventario y Logística",
     frame:
       '<iframe title="Dashboard de Inventario" width="1140" height="541.25" src="https://app.powerbi.com/view?r=eyJrIjoiZmI4Yjg3NmEtNGJhNi00MDBhLTlhN2MtOGNjNmNlYzljYjdiIiwidCI6ImM0YTY2YzM0LTJiYjctNDUxZi04YmUxLWIyYzI2YTQzMDE1OCIsImMiOjR9" frameborder="0" allowFullScreen="true" style="border: none; width: 100%; height: 100%;"></iframe>',
   },
   {
-    title: "Dashboard de comportamiento del cliente",
+    title: "Dashboard de Comportamiento del Cliente",
     frame:
       '<iframe title="Dashboard de Comentarios" width="1140" height="541.25" src="https://app.powerbi.com/view?r=eyJrIjoiNjAwZjBjZDAtYThlNS00MmI1LTgyMzQtYzM0ZDIxNzkzOThkIiwidCI6ImM0YTY2YzM0LTJiYjctNDUxZi04YmUxLWIyYzI2YTQzMDE1OCIsImMiOjR9" frameborder="0" allowFullScreen="true" style="border: none; width: 100%; height: 100%;"></iframe>',
   },
@@ -51,7 +51,7 @@ const updateTitle = (text) => {
 };
 
 const changeDashboard = (title) => {
-  if (title === "Dashboard de inventario y logística") {
+  if (title === dashboards[1].title) {
     const notificationInventory = document.getElementById("notification-block");
     notificationInventory.innerHTML = `<div class="notification-item" id="bajoStock">
                   <div class="notification-title">
@@ -73,14 +73,10 @@ const changeDashboard = (title) => {
 
   const dashboardFrame = document.getElementById("dashboard");
   dashboardFrame.innerHTML = "";
-  console.log("Frame:", dashboardFrame);
-  console.log("Title:", title);
   const dashboard = dashboards.find((d) =>
     d.title.toLowerCase().includes(title.toLowerCase())
   );
-  console.log("Dashboard found:", dashboard);
   dashboardFrame.innerHTML = dashboard.frame;
-  console.log("Dashboard frame set:", dashboard.frame);
 };
 
 const convertirCSVInventario = async () => {
