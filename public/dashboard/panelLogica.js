@@ -50,7 +50,8 @@ const updateTitle = (text) => {
   notificationInventory.innerHTML = "";
 };
 
-const changeDashboard = (title) => {
+const changeDashboard = async (title) => {
+  const idSede = document.getElementById("sede").value;
   if (title === dashboards[1].title) {
     const notificationInventory = document.getElementById("notification-block");
     notificationInventory.innerHTML = `<div class="notification-item" id="bajoStock">
@@ -67,8 +68,27 @@ const changeDashboard = (title) => {
                   <ul id="productosProntoVencer">
                   </ul>
                 </div>`;
-    obtenerBajoStock();
-    obtenerProntoVencimiento();
+    await obtenerBajoStock(idSede);
+    await obtenerProntoVencimiento(idSede);
+  }
+
+  if (title === dashboards[0].title) {
+    const notificationSales = document.getElementById("notification-block");
+    notificationSales.innerHTML = `<div class="notification-item" id="diferenciaVentas">
+                  <div class="notification-title">
+                    <p>Diferencia Ventas Presencial</p>
+                  </div>
+                  <ul id="ventasPresencial">
+                  </ul>
+                </div>
+                <div class="notification-item" id="prontoVencimiento">
+                  <div class="notification-title">
+                    <p>Diferencia Ventas Online</p>
+                  </div>
+                  <ul id="ventasOnline">
+                  </ul>
+                </div>`;
+    await obtenerDiferenciaVentas(idSede);
   }
 
   const dashboardFrame = document.getElementById("dashboard");
@@ -81,7 +101,7 @@ const changeDashboard = (title) => {
 
 const convertirCSVInventario = async () => {
   const url =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSUU2Q7lokaj-o5467Wj2BKzgX2XV3tmMkNAXEEIxET584qwM_3RoUdGXNtfkIlvQ/pub?output=csv";
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSUU2Q7lokaj-o5467Wj2BKzgX2XV3tmMkNAXEEIxET584qwM_3RoUdGXNtfkIlvQ/pub?gid=1617850259&single=true&output=csv";
 
   try {
     const response = await fetch(url);
@@ -102,13 +122,140 @@ const convertirCSVInventario = async () => {
   }
 };
 
-const obtenerBajoStock = async () => {
+const convertirCSVVentas = async () => {
+  const urlPresencial =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSUU2Q7lokaj-o5467Wj2BKzgX2XV3tmMkNAXEEIxET584qwM_3RoUdGXNtfkIlvQ/pub?gid=2123716944&single=true&output=csv";
+
+  const urlOnline =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSUU2Q7lokaj-o5467Wj2BKzgX2XV3tmMkNAXEEIxET584qwM_3RoUdGXNtfkIlvQ/pub?gid=354832970&single=true&output=csv";
+
   try {
-    const inventario = await convertirCSVInventario();
+    let response = await fetch(urlPresencial);
+    let data = await response.text();
+    let filas = data.split("\n").map((row) => row.split(","));
+    let encabezados = filas.shift();
+    const ventasPresenciales = filas.map((fila) => {
+      const objeto = {};
+      fila.forEach((valor, index) => {
+        objeto[encabezados[index]] = valor.trim();
+      });
+      return objeto;
+    });
+
+    response = await fetch(urlOnline);
+    data = await response.text();
+    filas = data.split("\n").map((row) => row.split(","));
+    encabezados = filas.shift();
+    const ventasOnline = filas.map((fila) => {
+      const objeto = {};
+      fila.forEach((valor, index) => {
+        objeto[encabezados[index]] = valor.trim();
+      });
+      return objeto;
+    });
+
+    return {
+      presencial: ventasPresenciales,
+      online: ventasOnline,
+    };
+  } catch (error) {
+    console.error("Error al obtener los datos:", error);
+  }
+};
+
+const convertirCSVSedes = async () => {
+  const url =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSUU2Q7lokaj-o5467Wj2BKzgX2XV3tmMkNAXEEIxET584qwM_3RoUdGXNtfkIlvQ/pub?gid=1087161123&single=true&output=csv";
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+    const filas = data.split("\n").map((row) => row.split(","));
+    const encabezados = filas.shift();
+    const sedes = filas.map((fila) => {
+      const objeto = {};
+      fila.forEach((valor, index) => {
+        objeto[encabezados[index]] = valor.trim();
+      });
+      return objeto;
+    });
+    return sedes;
+  } catch (error) {
+    console.error("Error al obtener los datos:", error);
+  }
+};
+
+const cargarSedes = async () => {
+  const sedes = await convertirCSVSedes();
+  const selectSede = document.getElementById("sede");
+  for (const sede of sedes) {
+    const option = document.createElement("option");
+    option.value = sede.idSede;
+    option.innerText = sede.nombreSede;
+    selectSede.appendChild(option);
+  }
+};
+
+const parseDate = (dateString) => {
+  const [day, month, year] = dateString.trim().split('/');
+  return year;
+};
+
+const obtenerDiferenciaVentas = async (idSede) => {
+  try {
+    const data = await convertirCSVVentas();
+    const totalVentas = {
+      presencial: { 2023: 0, 2024: 0 },
+      online: { 2023: 0, 2024: 0 },
+    };
+
+    ["presencial", "online"].forEach((tipo) => {
+      let ventas = data[tipo];
+      if (tipo === "presencial") {
+        ventas = ventas.filter((item) => item.idSede === idSede);
+      }
+
+      [2023, 2024].forEach((year) => {
+        totalVentas[tipo][year] = ventas
+          .filter((item) => parseDate(item.fecha) === year.toString())
+          .reduce((sum, item) => sum + parseFloat(item.monto_final),0)
+      });
+
+
+    });
+
+    const listVentasPresencial = document.getElementById("ventasPresencial");
+    const listVentasOnline = document.getElementById("ventasOnline");
+
+    if (listVentasPresencial) {
+      listVentasPresencial.innerHTML = `
+        <li>Total 2023: ${totalVentas.presencial[2023].toFixed(2)}</li>
+        <li>Total 2024: ${totalVentas.presencial[2024].toFixed(2)}</li>
+      `;
+    } else {
+      console.error("Element with ID 'ventasPresencial' not found.");
+    }
+
+    if (listVentasOnline) {
+      listVentasOnline.innerHTML = `
+        <li>Total 2023: ${totalVentas.online[2023].toFixed(2)}</li>
+        <li>Total 2024: ${totalVentas.online[2024].toFixed(2)}</li>
+      `;
+    } else {
+      console.error("Element with ID 'ventasOnline' not found.");
+    }
+  } catch (error) {
+    console.error("Error al obtener los datos:", error);
+  }
+};
+const obtenerBajoStock = async (idSede) => {
+  try {
+    const data = await convertirCSVInventario();
+    const inventario = data.filter((item) => item.idSede === idSede);
     const notificaciones = inventario.filter(
       (item) => Number.parseInt(item.stockactual) <= 30
     );
     const listProductos = document.getElementById("productosBajoStock");
+    listProductos.innerHTML = "";
     for (const producto of notificaciones) {
       const li = document.createElement("li");
       li.innerText = `* ${producto.producto} - Stock: ${producto.stockactual}`;
@@ -119,9 +266,10 @@ const obtenerBajoStock = async () => {
   }
 };
 
-const obtenerProntoVencimiento = async () => {
+const obtenerProntoVencimiento = async (idSede) => {
   try {
-    const inventario = await convertirCSVInventario();
+    const data = await convertirCSVInventario();
+    const inventario = data.filter((item) => item.idSede === idSede);
     const notificaciones = inventario.filter((item) => {
       const fechaVencimiento = new Date(item.fechavencimiento);
       const hoy = new Date();
@@ -130,6 +278,7 @@ const obtenerProntoVencimiento = async () => {
       return diasRestantes <= 30;
     });
     const listProductos = document.getElementById("productosProntoVencer");
+    listProductos.innerHTML = "";
     for (const producto of notificaciones) {
       const li = document.createElement("li");
       let diasRestantes = Math.ceil(
@@ -173,12 +322,28 @@ const cerrarSesion = () => {
   window.location.href = "/inicio";
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+const cambiarSede = async (event) => {
+  const idSede = event.target.value;
+  const title = document.getElementById("tituloDashboard").innerHTML;
+  if (title === dashboards[1].title) {
+    await obtenerBajoStock(idSede);
+    await obtenerProntoVencimiento(idSede);
+  }
+
+  if (title === dashboards[0].title) {
+    await obtenerDiferenciaVentas(idSede);
+  }
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
   checkExistence();
   handleResize();
+  await cargarSedes();
   const dashboardframe = document.getElementById("dashboard");
   dashboardframe.innerHTML = dashboards[0].frame;
   const items = document.querySelectorAll("aside .item");
+  const title = document.getElementById("tituloDashboard");
+  await changeDashboard(title.innerText);
   items.forEach((item, index) => {
     if (index < 3) {
       item.addEventListener("click", () => {

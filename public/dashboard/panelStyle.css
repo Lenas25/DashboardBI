@@ -60,6 +60,20 @@ header {
   align-items: center;
 }
 
+.sede{
+  border: 3px solid #61ae33;
+  border-radius: 20px;
+  padding: 10px 20px;
+  outline: none;
+  font-weight: 500;
+  min-width: 100px;
+}
+
+.sede:hover {
+  background-color: #61ae33;
+  color: white;
+}
+
 button {
   border: none;
   cursor: pointer;
@@ -67,6 +81,7 @@ button {
 }
 
 nav {
+  flex-wrap: wrap;
   justify-self: end;
   display: flex;
   justify-content: end;

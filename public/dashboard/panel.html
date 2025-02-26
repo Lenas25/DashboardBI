@@ -19,6 +19,8 @@
         <button class="logo" onclick="toggleNav()" id="abrirNav">
           <img src="  ../assets/logo.webp" />
         </button>
+        <select name="sede" id="sede" onchange="cambiarSede(event)" class="sede">
+        </select>
         <nav class="top">
           <div class="profile">
             <i class="fa-solid fa-user"></i>
@@ -30,9 +32,7 @@
             </button>
             <div class="notification-bar close" id="notifications">
               <h5>Notificaciones</h5>
-              <div class="notifications-list" id="notification-block">
-                
-              </div>
+              <div class="notifications-list" id="notification-block"></div>
             </div>
           </div>
         </nav>
@@ -66,13 +66,11 @@
 
           <div class="separator">
             <div class="info">
-              <h1 id="tituloDashboard">Dashboard de ventas y facturación</h1>
+              <h1 id="tituloDashboard">Dashboard de Ventas</h1>
             </div>
           </div>
 
-          <div class="separator" id="dashboard">
-
-          </div>
+          <div class="separator" id="dashboard"></div>
         </main>
       </div>
     </div>
